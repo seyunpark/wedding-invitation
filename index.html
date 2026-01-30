@@ -386,63 +386,6 @@
             }
         }
 
-        .event-location {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-            padding: 0 8px;
-            opacity: 0.8;
-        }
-
-        @media (min-width: 640px) {
-            .event-location {
-                font-size: 1.125rem;
-            }
-        }
-
-        .event-address {
-            font-size: 0.75rem;
-            padding: 0 16px;
-            opacity: 0.6;
-        }
-
-        @media (min-width: 640px) {
-            .event-address {
-                font-size: 0.875rem;
-            }
-        }
-
-        .map-button {
-            display: inline-block;
-            padding: 12px 32px;
-            background-color: #d4a5a5;
-            color: white;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: 8px;
-        }
-
-        @media (min-width: 640px) {
-            .map-button {
-                padding: 16px 40px;
-                font-size: 1rem;
-            }
-        }
-
-        .map-button:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            transform: scale(1.05);
-        }
-
-        .map-button:active {
-            transform: scale(0.95);
-        }
-
         /* Gallery Section */
         .gallery-section {
             padding: 32px 16px;
@@ -696,16 +639,6 @@
                 <p class="event-date">2024년 12월 25일 토요일</p>
                 <p class="event-time">오후 2시</p>
             </div>
-
-            <div class="event-info-item" style="margin-bottom: 32px;">
-                <p class="event-label">LOCATION</p>
-                <p class="event-location">○○○ 웨딩홀</p>
-                <p class="event-address">서울시 강남구 테헤란로 123 ○○빌딩 3층</p>
-            </div>
-
-            <a href="#" class="map-button" onclick="openNaverMap(); return false;">
-                네이버 지도로 길찾기
-            </a>
         </div>
 
         <!-- Gallery Section -->
@@ -797,13 +730,6 @@
 
             // 클릭한 썸네일에 active 클래스 추가
             thumbnails[index].classList.add('active');
-        }
-
-        // 네이버 지도 열기
-        function openNaverMap() {
-            const address = '서울시 강남구 테헤란로 123';
-            const url = `https://map.naver.com/v5/search/${encodeURIComponent(address)}`;
-            window.open(url, '_blank');
         }
     </script>
 </body>
