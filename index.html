@@ -20,6 +20,7 @@
             background-image: url('./background.png');
             background-repeat: repeat;
             background-position: top left;
+            background-size: 200px;
         }
 
         .container {
@@ -28,46 +29,6 @@
             margin: 0 auto;
             position: relative;
             overflow: hidden;
-        }
-
-        /* 꽃 장식 */
-        .flower-decoration {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-        }
-
-        .flower-decoration.top-left {
-            top: 8px;
-            left: 8px;
-        }
-
-        .flower-decoration.top-right {
-            top: 8px;
-            right: 8px;
-        }
-
-        .flower-decoration.bottom-left {
-            bottom: 32px;
-            left: 32px;
-        }
-
-        .flower-decoration.bottom-right {
-            bottom: 32px;
-            right: 32px;
-        }
-
-        @media (min-width: 640px) {
-            .flower-decoration.top-left,
-            .flower-decoration.top-right {
-                top: 16px;
-            }
-            .flower-decoration.top-left {
-                left: 16px;
-            }
-            .flower-decoration.top-right {
-                right: 16px;
-            }
         }
 
         /* 별 장식 */
@@ -523,34 +484,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- 최상단 장식 -->
-        <div class="flower-decoration top-left">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="25" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="25" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="15" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="15" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
-            </svg>
-        </div>
-        <div class="flower-decoration top-right">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                <circle cx="25" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="25" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="15" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
-                <circle cx="15" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
-            </svg>
-        </div>
-
         <!-- Title Section -->
         <div class="title-section" data-aos="fade-down">
             <div class="star-decoration">
@@ -589,15 +522,6 @@
                 <div style="position: absolute; top: 24px; left: -4px;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
                         <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
-                    </svg>
-                </div>
-                <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                        <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                        <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                        <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                        <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
                     </svg>
                 </div>
             </div>
@@ -676,33 +600,6 @@
 
         <!-- Footer -->
         <div class="footer-section" data-aos="fade-up">
-            <div class="flower-decoration bottom-left hidden-sm">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                </svg>
-            </div>
-            <div class="flower-decoration bottom-right hidden-sm">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                </svg>
-            </div>
-            <div style="margin-bottom: 16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display: inline-block;">
-                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
-                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
-                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
-                </svg>
-            </div>
             <p class="footer-text">소중한 자리에 함께해 주셔서</p>
             <p class="footer-text">감사합니다</p>
         </div>
