@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모바일 청첩장</title>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,10 +16,10 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
+            font-family: 'Noto Serif KR', serif, -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #fdfcfb;
-            color: #4a4a4a;
-            line-height: 1.6;
+            color: #2a2a2a;
+            line-height: 1.8;
             background-image: url('./background.png');
             background-repeat: repeat;
             background-position: top left;
@@ -112,12 +115,13 @@
 
         /* Main Image */
         .main-image-section {
-            padding: 0 16px 24px;
+            padding: 48px 16px 24px;
             margin-bottom: 24px;
         }
 
         @media (min-width: 640px) {
             .main-image-section {
+                padding-top: 64px;
                 margin-bottom: 32px;
             }
         }
@@ -144,11 +148,7 @@
         }
 
         .image-border {
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 3px solid #b3d4f0;
-            opacity: 0.3;
+            display: none;
         }
 
         .image-container {
@@ -182,8 +182,13 @@
             line-height: 1.8;
             margin-bottom: 24px;
             white-space: pre-wrap;
-            opacity: 0.75;
-            padding: 0 8px;
+            opacity: 0.95;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 640px) {
@@ -484,13 +489,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Title Section -->
-        <div class="title-section" data-aos="fade-down">
-            <h1>WEDDING</h1>
-            <h2>INVITATION</h2>
-            <p class="headline">평생 함께 하고 싶은 사람을 만났습니다</p>
-        </div>
-
         <!-- Main Image -->
         <div class="main-image-section" data-aos="zoom-in">
             <div class="image-wrapper">
@@ -501,39 +499,55 @@
             </div>
         </div>
 
+        <!-- Date Section -->
+        <div style="text-align: center; padding: 24px 16px 16px; margin-top: -20px;" data-aos="fade-up">
+            <p style="font-size: 1.75rem; font-weight: bold; color: #4a4a4a; opacity: 0.85;">2026년 4월</p>
+        </div>
+
         <!-- Message Section -->
         <div class="message-section" data-aos="fade-up">
-            <div class="heart-decoration">💕</div>
-            <p class="message-text">저희 두 사람이 사랑과 믿음으로
+            <p class="message-text">저희 두 사람이 사랑과 신뢰를 바탕으로
 한 가정을 이루게 되었습니다.
 
-소중한 분들을 모시고
-인생의 새로운 출발을 시작하려 합니다.
+마땅히 소중한 분들을 모시고
+기쁨을 나누어야 하나,
+저희의 뜻에 따라 가족들과 함께하는
+작은 예식으로 부부의 연을 맺게 되었습니다.
 
-오셔서 축복해 주시면
-더없는 기쁨으로 간직하겠습니다.</p>
+직접 뵙고 인사드리지 못해 송구한 마음입니다.
+비록 함께 자리를 하지는 못하지만,
+멀리서나마 저희의 첫걸음을 축복해 주신다면
+더없는 기쁨이 되겠습니다.
+
+서로 아끼며 행복하게 잘 살겠습니다.</p>
         </div>
 
         <!-- Couple Info -->
         <div class="couple-section" data-aos="fade-up">
             <div class="couple-bg"></div>
             <div class="couple-info">
-                <p class="parents">
-                    <span style="font-weight: 500;">신랑</span> 故 박태관·황영숙 <span style="font-weight: 500;">신부</span> 최규하·남월숙
-                </p>
-                <p class="relation">의 아들 · 딸</p>
-                <p class="names">박세윤 ♥ 최은지</p>
-            </div>
-        </div>
+                <div style="display: flex; justify-content: center; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                    <!-- 신랑 -->
+                    <div style="text-align: center; min-width: 140px;">
+                        <p style="font-size: 0.875rem; margin-bottom: 8px; opacity: 0.7; line-height: 1.6;">
+                            故 박태관·황영숙<br>의 아들
+                        </p>
+                        <p style="font-size: 1.5rem; font-weight: bold; opacity: 0.9;">박세윤</p>
+                    </div>
 
-        <!-- Event Info Section -->
-        <div class="event-section" data-aos="fade-up">
-            <div class="divider"></div>
+                    <!-- 하트 -->
+                    <div style="display: flex; align-items: center; font-size: 1.5rem; opacity: 0.6; margin-top: 20px;">
+                        💕
+                    </div>
 
-            <div class="event-info-item">
-                <p class="event-label">DATE & TIME</p>
-                <p class="event-date">2024년 12월 25일 토요일</p>
-                <p class="event-time">오후 2시</p>
+                    <!-- 신부 -->
+                    <div style="text-align: center; min-width: 140px;">
+                        <p style="font-size: 0.875rem; margin-bottom: 8px; opacity: 0.7; line-height: 1.6;">
+                            최규하·남월숙<br>의 딸
+                        </p>
+                        <p style="font-size: 1.5rem; font-weight: bold; opacity: 0.9;">최은지</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -554,8 +568,8 @@
                 <div class="gallery-thumbnail active" onclick="changePreview(0, './image/1769781714283.jpg')">
                     <img src="./image/1769781714283.jpg" alt="Gallery 1">
                 </div>
-                <div class="gallery-thumbnail" onclick="changePreview(1, './image/1769781714301.jpg')">
-                    <img src="./image/1769781714301.jpg" alt="Gallery 2">
+                <div class="gallery-thumbnail" onclick="changePreview(1, './image/temp_1769782924766.1387497559.jpeg')">
+                    <img src="./image/temp_1769782924766.1387497559.jpeg" alt="Gallery 2">
                 </div>
                 <div class="gallery-thumbnail" onclick="changePreview(2, './image/1769781714377.jpg')">
                     <img src="./image/1769781714377.jpg" alt="Gallery 3">
@@ -563,8 +577,8 @@
                 <div class="gallery-thumbnail" onclick="changePreview(3, './image/1769781714398.jpg')">
                     <img src="./image/1769781714398.jpg" alt="Gallery 4">
                 </div>
-                <div class="gallery-thumbnail" onclick="changePreview(4, './image/1769781714491.jpg')">
-                    <img src="./image/1769781714491.jpg" alt="Gallery 5">
+                <div class="gallery-thumbnail" onclick="changePreview(4, './image/1769781714301.jpg')">
+                    <img src="./image/1769781714301.jpg" alt="Gallery 5">
                 </div>
                 <div class="gallery-thumbnail" onclick="changePreview(5, './image/1769781714535.jpg')">
                     <img src="./image/1769781714535.jpg" alt="Gallery 6">
@@ -572,16 +586,14 @@
                 <div class="gallery-thumbnail" onclick="changePreview(6, './image/1769781714565.jpg')">
                     <img src="./image/1769781714565.jpg" alt="Gallery 7">
                 </div>
-                <div class="gallery-thumbnail" onclick="changePreview(7, './image/1769781714578.jpg')">
-                    <img src="./image/1769781714578.jpg" alt="Gallery 8">
+                <div class="gallery-thumbnail" onclick="changePreview(7, './image/1769781714491.jpg')">
+                    <img src="./image/1769781714491.jpg" alt="Gallery 8">
                 </div>
-            </div>
-        </div>
+                <div class="gallery-thumbnail" onclick="changePreview(8, './image/1769781714578.jpg')">
+                    <img src="./image/1769781714578.jpg" alt="Gallery 9">
+                </div>
 
-        <!-- Footer -->
-        <div class="footer-section" data-aos="fade-up">
-            <p class="footer-text">소중한 자리에 함께해 주셔서</p>
-            <p class="footer-text">감사합니다</p>
+            </div>
         </div>
     </div>
 
