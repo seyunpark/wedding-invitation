@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모바일 청첩장</title>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,139 +13,798 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
+            background-color: #fdfcfb;
+            color: #4a4a4a;
             line-height: 1.6;
+            background-image: url('./background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .container {
-            max-width: 500px;
+            width: 90%;
+            max-width: 600px;
             margin: 0 auto;
-            background-color: white;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .header {
+        /* 꽃 장식 */
+        .flower-decoration {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+        }
+
+        .flower-decoration.top-left {
+            top: 8px;
+            left: 8px;
+        }
+
+        .flower-decoration.top-right {
+            top: 8px;
+            right: 8px;
+        }
+
+        .flower-decoration.bottom-left {
+            bottom: 32px;
+            left: 32px;
+        }
+
+        .flower-decoration.bottom-right {
+            bottom: 32px;
+            right: 32px;
+        }
+
+        @media (min-width: 640px) {
+            .flower-decoration.top-left,
+            .flower-decoration.top-right {
+                top: 16px;
+            }
+            .flower-decoration.top-left {
+                left: 16px;
+            }
+            .flower-decoration.top-right {
+                right: 16px;
+            }
+        }
+
+        /* 별 장식 */
+        .star-decoration {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* Title Section */
+        .title-section {
             text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 48px 16px 24px;
         }
 
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            font-weight: 300;
+        @media (min-width: 640px) {
+            .title-section {
+                padding: 80px 16px 32px;
+            }
         }
 
-        .header p {
-            font-size: 1.1em;
+        .title-section h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+            opacity: 0.85;
+        }
+
+        @media (min-width: 640px) {
+            .title-section h1 {
+                font-size: 1.875rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .title-section h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .title-section h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+            opacity: 0.85;
+        }
+
+        @media (min-width: 640px) {
+            .title-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .title-section h2 {
+                font-size: 1.875rem;
+            }
+        }
+
+        .title-section .headline {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 16px;
+            padding: 0 8px;
+            opacity: 0.75;
+        }
+
+        @media (min-width: 640px) {
+            .title-section .headline {
+                font-size: 1.5rem;
+                margin-top: 24px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .title-section .headline {
+                font-size: 1.875rem;
+            }
+        }
+
+        /* Main Image */
+        .main-image-section {
+            padding: 0 16px 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .main-image-section {
+                margin-bottom: 32px;
+            }
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 256px;
+            height: 256px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .image-wrapper {
+                width: 288px;
+                height: 288px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .image-wrapper {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        .image-border {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid #d4a5a5;
+            opacity: 0.2;
+        }
+
+        .image-container {
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Message Section */
+        .message-section {
+            text-align: center;
+            padding: 24px 16px;
+        }
+
+        @media (min-width: 640px) {
+            .message-section {
+                padding: 32px 24px;
+            }
+        }
+
+        .message-section .message-text {
+            font-size: 0.875rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            white-space: pre-wrap;
+            opacity: 0.75;
+            padding: 0 8px;
+        }
+
+        @media (min-width: 640px) {
+            .message-section .message-text {
+                font-size: 1rem;
+                margin-bottom: 32px;
+            }
+        }
+
+        /* Couple Info */
+        .couple-section {
+            text-align: center;
+            padding: 16px 16px;
+        }
+
+        @media (min-width: 640px) {
+            .couple-section {
+                padding: 24px 24px;
+            }
+        }
+
+        .couple-bg {
+            display: inline-block;
+            padding: 20px 24px;
+            border-radius: 16px;
+            background-color: #d4a5a5;
+            opacity: 0.1;
+        }
+
+        @media (min-width: 640px) {
+            .couple-bg {
+                padding: 24px 32px;
+            }
+        }
+
+        .couple-info {
+            position: relative;
+            margin-top: -56px;
+            padding-bottom: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .couple-info {
+                margin-top: -64px;
+                padding-bottom: 24px;
+            }
+        }
+
+        .couple-info .parents {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            padding: 0 8px;
+            opacity: 0.75;
+        }
+
+        @media (min-width: 640px) {
+            .couple-info .parents {
+                font-size: 1.125rem;
+            }
+        }
+
+        .couple-info .relation {
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+            opacity: 0.65;
+        }
+
+        @media (min-width: 640px) {
+            .couple-info .relation {
+                font-size: 1rem;
+            }
+        }
+
+        .couple-info .names {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 8px;
             opacity: 0.9;
         }
 
-        .content {
-            padding: 40px 20px;
+        @media (min-width: 640px) {
+            .couple-info .names {
+                font-size: 1.5rem;
+                margin-top: 12px;
+            }
         }
 
-        .section {
-            margin-bottom: 40px;
+        /* Event Info */
+        .event-section {
             text-align: center;
+            padding: 24px 16px;
         }
 
-        .section h2 {
-            font-size: 1.5em;
+        @media (min-width: 640px) {
+            .event-section {
+                padding: 32px 24px;
+            }
+        }
+
+        .divider {
+            width: 50px;
+            height: 2px;
+            background-color: #d4a5a5;
+            opacity: 0.3;
+            margin: 0 auto 24px;
+        }
+
+        @media (min-width: 640px) {
+            .divider {
+                margin-bottom: 32px;
+            }
+        }
+
+        .event-info-item {
             margin-bottom: 20px;
-            color: #667eea;
         }
 
-        .info-box {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+        @media (min-width: 640px) {
+            .event-info-item {
+                margin-bottom: 24px;
+            }
         }
 
-        .date-info {
-            font-size: 1.2em;
-            margin: 10px 0;
+        .event-label {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
         }
 
-        .location {
-            margin-top: 15px;
-            line-height: 1.8;
+        @media (min-width: 640px) {
+            .event-label {
+                font-size: 0.875rem;
+            }
         }
 
-        .button {
+        .event-date {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            padding: 0 8px;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 640px) {
+            .event-date {
+                font-size: 1.25rem;
+            }
+        }
+
+        .event-time {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        @media (min-width: 640px) {
+            .event-time {
+                font-size: 1.125rem;
+            }
+        }
+
+        .event-location {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            padding: 0 8px;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 640px) {
+            .event-location {
+                font-size: 1.125rem;
+            }
+        }
+
+        .event-address {
+            font-size: 0.75rem;
+            padding: 0 16px;
+            opacity: 0.6;
+        }
+
+        @media (min-width: 640px) {
+            .event-address {
+                font-size: 0.875rem;
+            }
+        }
+
+        .map-button {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: #667eea;
+            padding: 12px 32px;
+            background-color: #d4a5a5;
             color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
             text-decoration: none;
-            border-radius: 25px;
-            margin: 10px 5px;
-            transition: background-color 0.3s;
+            margin-top: 8px;
         }
 
-        .button:hover {
-            background-color: #5568d3;
+        @media (min-width: 640px) {
+            .map-button {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
         }
 
-        .footer {
+        .map-button:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .map-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 32px 16px;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-section {
+                padding: 48px 16px;
+            }
+        }
+
+        .gallery-title {
             text-align: center;
-            padding: 30px 20px;
-            background-color: #f8f9fa;
-            color: #666;
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+            opacity: 0.75;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-title {
+                font-size: 1rem;
+                margin-bottom: 32px;
+            }
+        }
+
+        .gallery-preview {
+            margin-bottom: 24px;
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-preview {
+                margin-bottom: 32px;
+            }
+        }
+
+        .gallery-preview-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            max-height: 70vh;
+        }
+
+        .gallery-preview-img img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 70vh;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-width: 448px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-grid {
+                gap: 10px;
+            }
+        }
+
+        .gallery-thumbnail {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-thumbnail:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .gallery-thumbnail.active {
+            box-shadow: 0 0 0 2px #d4a5a5;
+            transform: scale(1.05);
+        }
+
+        .gallery-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        .footer-section {
+            text-align: center;
+            padding: 32px 16px;
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .footer-section {
+                padding: 48px 16px;
+            }
+        }
+
+        .footer-section .footer-text {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-section .footer-text {
+                font-size: 0.875rem;
+            }
+        }
+
+        .hidden-sm {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .hidden-sm {
+                display: block;
+            }
+        }
+
+        /* 하트 아이콘 */
+        .heart-decoration {
+            display: inline-block;
+            margin-bottom: 16px;
+            font-size: 2rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>💑 우리 결혼합니다</h1>
-            <p>Wedding Invitation</p>
+        <!-- 최상단 장식 -->
+        <div class="flower-decoration top-left">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="25" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="25" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="15" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="15" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
+            </svg>
+        </div>
+        <div class="flower-decoration top-right">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                <circle cx="25" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="25" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="15" cy="25" r="4" fill="#d4a5a5" opacity="0.3"/>
+                <circle cx="15" cy="15" r="4" fill="#d4a5a5" opacity="0.3"/>
+            </svg>
         </div>
 
-        <div class="content">
-            <div class="section">
-                <h2>🎊 초대합니다</h2>
-                <p>
-                    저희 두 사람이 사랑과 믿음으로<br>
-                    한 가정을 이루게 되었습니다.<br>
-                    귀한 걸음 하시어 축복해 주시면<br>
-                    더없는 기쁨으로 간직하겠습니다.
-                </p>
+        <!-- Title Section -->
+        <div class="title-section" data-aos="fade-down">
+            <div class="star-decoration">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
+                    <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
+                </svg>
             </div>
-
-            <div class="section info-box">
-                <div class="date-info">
-                    <strong>📅 2024년 00월 00일</strong><br>
-                    <span>오후 0시 00분</span>
-                </div>
-                <div class="location">
-                    <strong>📍 장소</strong><br>
-                    웨딩홀 이름<br>
-                    서울시 강남구 테헤란로 123
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>👰‍♀️ 🤵‍♂️</h2>
-                <p>
-                    <strong>신랑</strong> 홍길동 · <strong>신부</strong> 김영희
-                </p>
-            </div>
-
-            <div class="section">
-                <a href="#" class="button">📍 오시는 길</a>
-                <a href="#" class="button">📞 연락하기</a>
+            <h1>WEDDING</h1>
+            <h2>INVITATION</h2>
+            <p class="headline">평생 함께 하고 싶은 사람을 만났습니다</p>
+            <div class="star-decoration" style="margin-top: 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
+                    <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
+                </svg>
             </div>
         </div>
 
-        <div class="footer">
-            <p>GitHub Pages 테스트용 모바일 청첩장</p>
+        <!-- Main Image -->
+        <div class="main-image-section" data-aos="zoom-in">
+            <div class="image-wrapper">
+                <div class="image-border"></div>
+                <div class="image-container">
+                    <img src="./couple-photo.jpg" alt="신랑 신부 사진">
+                </div>
+                <!-- 장식 별들 -->
+                <div style="position: absolute; top: -4px; left: 50%; transform: translateX(-50%);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
+                        <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
+                    </svg>
+                </div>
+                <div style="position: absolute; top: 24px; right: -4px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
+                        <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
+                    </svg>
+                </div>
+                <div style="position: absolute; top: 24px; left: -4px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5" opacity="0.3">
+                        <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.5-6.3 4.5 2.3-7-6-4.6h7.6z"/>
+                    </svg>
+                </div>
+                <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                        <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                        <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                        <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                        <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Section -->
+        <div class="message-section" data-aos="fade-up">
+            <div class="heart-decoration">💕</div>
+            <p class="message-text">저희 두 사람이 사랑과 믿음으로
+한 가정을 이루게 되었습니다.
+
+소중한 분들을 모시고
+인생의 새로운 출발을 시작하려 합니다.
+
+오셔서 축복해 주시면
+더없는 기쁨으로 간직하겠습니다.</p>
+        </div>
+
+        <!-- Couple Info -->
+        <div class="couple-section" data-aos="fade-up">
+            <div class="couple-bg"></div>
+            <div class="couple-info">
+                <p class="parents">
+                    <span style="font-weight: 500;">신랑</span> 홍길동 <span style="font-weight: 500;">신부</span> 김영희
+                </p>
+                <p class="relation">의 아들 · 딸</p>
+                <p class="names">홍철수 ♥ 김민지</p>
+            </div>
+        </div>
+
+        <!-- Event Info Section -->
+        <div class="event-section" data-aos="fade-up">
+            <div class="divider"></div>
+
+            <div class="event-info-item">
+                <p class="event-label">DATE & TIME</p>
+                <p class="event-date">2024년 12월 25일 토요일</p>
+                <p class="event-time">오후 2시</p>
+            </div>
+
+            <div class="event-info-item" style="margin-bottom: 32px;">
+                <p class="event-label">LOCATION</p>
+                <p class="event-location">○○○ 웨딩홀</p>
+                <p class="event-address">서울시 강남구 테헤란로 123 ○○빌딩 3층</p>
+            </div>
+
+            <a href="#" class="map-button" onclick="openNaverMap(); return false;">
+                네이버 지도로 길찾기
+            </a>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section" data-aos="fade-up">
+            <div class="divider"></div>
+            <p class="gallery-title">GALLERY</p>
+
+            <!-- Large Preview Image -->
+            <div class="gallery-preview">
+                <div class="gallery-preview-img">
+                    <img id="previewImage" src="./gallery1.jpg" alt="Gallery preview">
+                </div>
+            </div>
+
+            <!-- Thumbnail Grid -->
+            <div class="gallery-grid">
+                <div class="gallery-thumbnail active" onclick="changePreview(0, './gallery1.jpg')">
+                    <img src="./gallery1.jpg" alt="Gallery 1">
+                </div>
+                <div class="gallery-thumbnail" onclick="changePreview(1, './gallery2.jpg')">
+                    <img src="./gallery2.jpg" alt="Gallery 2">
+                </div>
+                <div class="gallery-thumbnail" onclick="changePreview(2, './gallery3.jpg')">
+                    <img src="./gallery3.jpg" alt="Gallery 3">
+                </div>
+                <div class="gallery-thumbnail" onclick="changePreview(3, './gallery4.jpg')">
+                    <img src="./gallery4.jpg" alt="Gallery 4">
+                </div>
+                <div class="gallery-thumbnail" onclick="changePreview(4, './gallery5.jpg')">
+                    <img src="./gallery5.jpg" alt="Gallery 5">
+                </div>
+                <div class="gallery-thumbnail" onclick="changePreview(5, './gallery6.jpg')">
+                    <img src="./gallery6.jpg" alt="Gallery 6">
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section" data-aos="fade-up">
+            <div class="flower-decoration bottom-left hidden-sm">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                </svg>
+            </div>
+            <div class="flower-decoration bottom-right hidden-sm">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                </svg>
+            </div>
+            <div style="margin-bottom: 16px;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display: inline-block;">
+                    <circle cx="20" cy="20" r="4" fill="#d4a5a5" opacity="0.6"/>
+                    <circle cx="20" cy="12" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="28" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="20" cy="28" r="5" fill="#d4a5a5" opacity="0.4"/>
+                    <circle cx="12" cy="20" r="5" fill="#d4a5a5" opacity="0.4"/>
+                </svg>
+            </div>
+            <p class="footer-text">소중한 자리에 함께해 주셔서</p>
+            <p class="footer-text">감사합니다</p>
         </div>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 1500,
+            once: false
+        });
+
+        // 갤러리 이미지 변경
+        let currentIndex = 0;
+        function changePreview(index, src) {
+            currentIndex = index;
+            document.getElementById('previewImage').src = src;
+
+            // 모든 썸네일에서 active 클래스 제거
+            const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+            // 클릭한 썸네일에 active 클래스 추가
+            thumbnails[index].classList.add('active');
+        }
+
+        // 네이버 지도 열기
+        function openNaverMap() {
+            const address = '서울시 강남구 테헤란로 123';
+            const url = `https://map.naver.com/v5/search/${encodeURIComponent(address)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
